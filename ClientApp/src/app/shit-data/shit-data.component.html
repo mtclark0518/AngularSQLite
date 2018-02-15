@@ -1,3 +1,19 @@
-<p>
-  shit-data works!
-</p>
+<h1>So much Shit</h1>
+
+
+<p *ngIf="!shits"><em>Loading...</em></p>
+
+<table class='table' *ngIf="shits">
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>Smell. (C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shit of shits">
+      <td>{{ shit.size }}</td>
+      <td>{{ shit.smell }}</td>
+    </tr>
+  </tbody>
+</table>

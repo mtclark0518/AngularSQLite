@@ -27,6 +27,11 @@
                         <span class='glyphicon glyphicon-th-list'></span> Fetch data
                     </a>
                 </li>
+                <li [routerLinkActive]='["link-active"]'>
+                  <a [routerLink]='["/shit"]' (click)='collapse()'>
+                      <span class='glyphicon glyphicon-th-heart'></span> Shit Log
+                  </a>
+              </li>
             </ul>
         </div>
     </div>
