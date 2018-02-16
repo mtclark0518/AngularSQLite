@@ -26,7 +26,7 @@ li.link-active a:focus {
         width: calc(25% - 20px);
     }
     .navbar {
-        border-radius: 0px;
+        border-radius: 1px;
         border-width: 0px;
         height: 100%;
     }
@@ -51,9 +51,9 @@ li.link-active a:focus {
     }
     .navbar a {
         /* If a menu item's text is too long, truncate it */
-        width: 100%;
+        /* width: 100%;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+        text-overflow: ellipsis; */
     }
 }
