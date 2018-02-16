@@ -10,6 +10,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ShitService } from './providers/shit.service';
 import { ShitListComponent } from './shit-list/shit-list.component';
 import { AppRoutingModule } from './app-routing.module'
+import { IdentityService } from './providers/identity.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AppRoutingModule } from './app-routing.module'
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [ShitService],
+  providers: [ShitService, IdentityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
