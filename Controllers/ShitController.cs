@@ -21,12 +21,12 @@ namespace AngularSQLite.Controllers
         {
             _context = context;
         }
-        [HttpGet("shits")]
+        [HttpGet("all-shits")]
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            var shit = await _context.Shit.ToListAsync();
-            return new ObjectResult(shit);
+            var shits = await _context.Shit.ToListAsync();
+            return new ObjectResult(shits);
         }
     }
 }

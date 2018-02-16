@@ -5,12 +5,12 @@ export class ShitService {
 
   baseUrl = 'http://localhost:5000'
 
-  constructor(private http: HttpClient) { }
 
   getAllShits(){
-    return this.http.get(`${this.baseUrl}/api/shit/shit`)
+    return this.http.get(`${this.baseUrl}/api/shit/all-shits`)
   }
 
+  constructor(private http: HttpClient) { }
 
 
 }

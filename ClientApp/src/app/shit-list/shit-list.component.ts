@@ -1,12 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShitService } from '../providers/shit.service'
-import { Shit } from '../models/shit.interface'
 @Component({
-  selector: 'app-shit-data',
-  templateUrl: './shit-data.component.html',
-  styleUrls: ['./shit-data.component.css']
+  selector: 'app-shit-list',
+  templateUrl: './shit-list.component.html',
+  styleUrls: ['./shit-list.component.css']
 })
-export class ShitDataComponent implements OnInit {
+export class ShitListComponent implements OnInit {
+
   public shits: any
   constructor(public shit: ShitService) { }
 
@@ -16,5 +16,4 @@ export class ShitDataComponent implements OnInit {
       this.shits = result
     }, error => console.log(error))
   }
-
 }

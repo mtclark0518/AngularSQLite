@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShitDataComponent } from './shit-data.component';
+import { ShitListComponent } from './shit-list.component';
 
-describe('ShitDataComponent', () => {
-  let component: ShitDataComponent;
-  let fixture: ComponentFixture<ShitDataComponent>;
+describe('ShitListComponent', () => {
+  let component: ShitListComponent;
+  let fixture: ComponentFixture<ShitListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShitDataComponent ]
+      declarations: [ ShitListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShitDataComponent);
+    fixture = TestBed.createComponent(ShitListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
