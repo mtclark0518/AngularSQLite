@@ -15,6 +15,7 @@ namespace AngularSQLite.Models
         public string Username { get; set; }
 
         [Required]
+        [StringLength(100, ErrorMessage = "Password must be at least 6 characters", MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Claims;
+﻿
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
 using AngularSQLite.Models;
 
 namespace AngularSQLite.Controllers
@@ -48,7 +50,7 @@ namespace AngularSQLite.Controllers
             var url = returnUrl;
             if (ModelState.IsValid)
             {
-                var newUser = new User { Email = user.Email, };
+                var newUser = new User { Username = user.Email, };
                 var result = await _userManager.CreateAsync(newUser, user.Password);
                 if(result.Succeeded)
                 {
@@ -60,5 +62,27 @@ namespace AngularSQLite.Controllers
             }
             return new NotFoundObjectResult(user);
         }
+        
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(User user, string returnUrl = null)
+        {
+            var url = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var result = await _signinManager.PasswordSignInAsync(user.Email, user.Password, user.isAdmin, lockoutOnFailure:false);
+                if(result.Succeeded)
+                {
+                    _logger.LogInformation("User logged in ya bitch");
+                    return new ObjectResult(user);
+                }
+            _logger.LogWarning("user not found");
+                return new NotFoundResult();
+            }
+            _logger.LogWarning("model state invalid");
+            return new NotFoundResult();
+        }
+
     }
 }

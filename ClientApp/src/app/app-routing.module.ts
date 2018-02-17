@@ -5,13 +5,25 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ShitListComponent } from './shit-list/shit-list.component';
+import { AuthGuard } from './providers/auth-guard.service';
+import { IdentityService } from './providers/identity.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'shit', component: ShitListComponent},
-  { path: 'counter', component: CounterComponent },
-  { path: 'fetch-data', component: FetchDataComponent },
-  { path: '**', pathMatch: 'full', component: ShitListComponent },
+  {
+    path: '',
+    component: HomeComponent},
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo:'counter', pathMatch: 'full'},
+      { path: 'counter', component: CounterComponent },
+      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'shit', component: ShitListComponent},
+      { path: '**', pathMatch: 'full', component: HomeComponent },
+
+    ]
+  }
 ];
 
 @NgModule({
@@ -19,9 +31,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule],
-  providers: [
-
-  ]
+  providers: [ AuthGuard, IdentityService ]
 })
 export class AppRoutingModule { }
 
@@ -31,7 +41,6 @@ export class AppRoutingModule { }
 //---------Goes inside of routes
   // {
   //   path: 'admin',
-  //   loadChildren: 'app/admin/admin.module#AdminModule',
   //   canActivate: [AuthGuard],
   //   canActivateChild: [AuthGuard],
   //   canLoad: [AuthGuard],
